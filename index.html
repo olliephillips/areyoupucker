@@ -147,9 +147,23 @@
 		return 'LED1.reset();LED2.reset();LED3.reset();\n';
 	},
 	'panelClick': function(){
-		//console.log(e);
-		console.log(this);
-		this.setAttribute("fill", "#FFFFFF");
+		var elem, state, newFill;
+		state = this.getAttribute("fill");
+		switch(state){
+			case "#867575":
+				newFill = "#361BDD";	
+			break;
+			case "#361BDD":
+				newFill = "#47E641";
+			break;
+			case "#47E641":
+				newFill = "#E90B0B";
+			break;
+			case "#E90B0B":
+				newFill = "#361BDD";
+			break;
+		}
+		this.setAttribute("fill", newFill);
 	}	
    
       }
