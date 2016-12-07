@@ -87,13 +87,13 @@
             if (!connection) throw "Error!";
 		console.log("Connected");
             //clearTimeout();
-		connection.on('data', function(d) {
+		//connection.on('data', function(d) {
 			setTimeout(pucker.setColor(1), 1000);
             		setTimeout(pucker.setColor(2), 2000);
             		setTimeout(pucker.setColor(3), 3000);
             		setTimeout(pucker.setColor(4), 3000);
 	    		setTimeout(Puck.close(), 5000);
-		});
+		//});
       
           }); 
         },
