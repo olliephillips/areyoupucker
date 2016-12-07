@@ -80,32 +80,60 @@
     </div>
     <script src="https://www.puck-js.com/puck.js"></script>
     <script>
+var connection;		
+	    
+	    
       var pucker = {
+	      
         'init': function(){
+	 	if (connection) {
+        		connection.close();
+        		connection = undefined;
+      		}	
           // Start webbluetooth
-          Puck.connect(function(connection) {
-            if (!connection) throw "Error!";
-		console.log("Connected");
-            //clearTimeout();
-		//connection.on('data', function(d) {
-			setTimeout(pucker.setColor(connection,1), 1000);
-            		setTimeout(pucker.setColor(connection, 2), 2000);
-            		setTimeout(pucker.setColor(connection, 3), 3000);
-            		setTimeout(pucker.setColor(connection, 4), 3000);
-	    		setTimeout(connection.close(), 10000);
-		//});
+          Puck.connect(function(c) {
+            if (!c) {
+	    	console.log("Problem connecting");
+	    } else {
+		console.log("Connected"); 
+		connection = c;
+		connection.write('reset()\n', function(){
+			var led,cmd;
+			setTimeout(function(){
+				led = puck.getColor();
+				connection.write(puck.getCmd(led), function(){
+					setTimeOut(function(){
+					led = puck.getColor();
+					connection.write(puck.getCmd(led), function(){
+						console.log("done");
+					});	
+					}, 1500);
+				});
+			},1500);
+		});    
+		    
+		    
+	    }
+		
+    
       
           }); 
         },
-        'setColor': function(con,step) {
+	'getColor': function(){
+		return Math.floor(Math.random() * 3) + 1;
+	},
+	'getCmd': function(led){
+		return 'LED' + led + '.set()\n';
+	} 
+	 /*     
+        'setColor': function(step) {
 		console.log("Step " + step);
             var led = Math.floor(Math.random() * 3) + 1;
             var cmd = 'LED' + led + '.set()\n';
             var el = 'color' + step + 'set';
-            con.write('LED1.reset();LED2.reset();LED3.reset();\n');
             con.write(cmd);
             document.getElementById(el).value = led;
-        }
+        }*/
       }
     </script>  
     <script>
