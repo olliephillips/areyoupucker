@@ -18,7 +18,7 @@
 	</head>
 	<body>
     <div id="form-wrapper">
-      <h1>Submit the form</h2>
+      <h1>Submit the form</h1>
       <form>
         <div class="field">
           <label for="name">Name</label>
@@ -79,10 +79,12 @@
                 </g>
             </g>
         </svg>
+	<!-- Targets -->     
         <input type="hidden" id="color1set"/>
         <input type="hidden" id="color2set"/>
         <input type="hidden" id="color3set"/>
         <input type="hidden" id="color4set"/>
+	<!-- Actual --->      
 	<input type="hidden" id="color1val"/>
         <input type="hidden" id="color2val"/>
         <input type="hidden" id="color3val"/>
@@ -132,19 +134,7 @@
 		
 		},2000);
 	});
-			   
-			
-			
-		
-			
-			
-	
-		    
-		    
-	   
-		
-    
-      
+			   		
 
         },
 	'getColor': function(){
@@ -155,20 +145,27 @@
 	},
 	'getCmdOff': function(){
 		return 'LED1.reset();LED2.reset();LED3.reset();\n';
-	}
-	    
+	},
+	'panelClick': function(e){
+		console.log(e);
+	}	
+   
       }
     </script>  
     <script>
       var color1 = document.getElementById("color-1");
-      var color2 = document.getElementById("color-1");
-      var color3 = document.getElementById("color-1");
-      var color3 = document.getElementById("color-1");
+      var color2 = document.getElementById("color-2");
+      var color3 = document.getElementById("color-3");
+      var color4 = document.getElementById("color-4");
       var start = document.getElementById("start-button");
 
       // Start button listener
       start.addEventListener("click", pucker.init);
-
+      // Color panel listeners
+      color1.addEventListener("click", pucker.panelClick);
+	color2.addEventListener("click", pucker.panelClick); 
+	    color3.addEventListener("click", pucker.panelClick);
+	color4.addEventListener("click", pucker.panelClick);	
     </script>  
      
 	</body>
