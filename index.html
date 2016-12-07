@@ -109,7 +109,7 @@ var connection;
 					console.log("in interval");
 					if(count < 4){
 						if(on) {
-							connection.write(pucker.getCmdOff(led));
+							connection.write(pucker.getCmdOff());
 							on != on;	
 						} else {
 							led = pucker.getColor();
@@ -137,10 +137,10 @@ var connection;
 		return Math.floor(Math.random() * 3) + 1;
 	},
 	'getCmdOn': function(led){
-		return 'LED' + led + '.set()\n';
+		return "LED' + led + '.set()\n";
 	},
-	'getCmdOff': function(led){
-		return 'LED' + led + '.reset()\n';
+	'getCmdOff': function(){
+		return "LED1.reset();LED2.reset();LED3.reset();\n";
 	}
 	      
 	 /*     
