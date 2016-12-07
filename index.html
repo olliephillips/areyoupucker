@@ -98,10 +98,11 @@ var myInt;
             if (!c) {
 	    	console.log("Problem connecting");
 		return;
-	    } else {
+	    }
 		console.log("Connected"); 
 		connection = c;
 		connection.write("reset();\n", function(){
+			/*
 			console.log("reset");
 			setTimeout(function(){
 				console.log("in timeout");
@@ -125,11 +126,11 @@ var myInt;
 				
 			},1500);
 			
-			
+			*/
 		});    
 		    
 		    
-	    }
+	   
 		
     
       
