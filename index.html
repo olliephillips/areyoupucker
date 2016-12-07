@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Are you pucker</title>
+    <style>
+      body{font-family:sans-serif;font-size:20px;color:#333333;}
+      h1{font-size:32px;}
+      label{display:block;margin-bottom:5px;}
+      input{font-size:20px;}
+      input[type="text"]{width:100%;}
+      .field{margin-bottom:20px;}
+      button{font-size:26px;}
+      #form-wrapper{width:300px;margin-left:auto;margin-right:auto;margin-top:100px;}
+      rect.panel{cursor: pointer; cursor: hand;}
+      #success-pucker{display:none;}
+      .data{display:none;}
+    </style>
+	</head>
+	<body>
+    <div id="form-wrapper">
+      <h1>Submit the form</h2>
+      <form>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name"/>
+        </div>
+        <div class="field">
+          <label for="name">Age</label>
+          <input type="text" id="age" name="age" placeholder="Your age"/>
+        </div>
+        <div class="field">
+          <button>Submit</button>
+        </div>
+      </form> 
+      <div>
+
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <svg width="307px" height="153px" viewBox="0 0 307 153" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+            <title>Group</title>
+            <desc>Created with Sketch.</desc>
+            <defs>
+                <rect id="path-1" x="0" y="0" width="307" height="153" rx="8"></rect>
+                <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="307" height="153" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+            </defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Group">
+                    <use id="are-you-pucker" stroke="#D2CECE" mask="url(#mask-2)" stroke-width="2" fill="#353333" xlink:href="#path-1"></use>
+                    <text id="maintext" font-family="Consolas" font-size="20" font-weight="normal" fill="#F4F0F5">
+                        <tspan x="23" y="86">Are you pucker?</tspan>
+                    </text>
+                    <text id="subtext" font-family="Consolas" font-size="12" font-weight="normal" fill="#F4F0F5">
+                        <tspan x="23" y="102">Set the boxes above to match color code </tspan>
+                        <tspan x="23" y="114">sent to your Puck.</tspan>
+                    </text>
+                    <rect id="color-1" fill="#361BDD" x="23" y="14" width="56" height="51" rx="8"></rect>
+                    <rect id="color-2" fill="#47E641" x="91" y="14" width="56" height="51" rx="8"></rect>
+                    <rect id="color-3" fill="#867575" x="159" y="14" width="56" height="51" rx="8"></rect>
+                    <rect id="color-4" fill="#E90B0B" x="227" y="14" width="56" height="51" rx="8"></rect>
+                    <g id="start-button" transform="translate(22.000000, 121.000000)">
+                        <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="85" height="24" rx="8"></rect>
+                        <text id="Start" font-family="Consolas" font-size="14" font-weight="normal" fill="#2F2E30">
+                            <tspan x="23" y="16">Start</tspan>
+                        </text>
+                    </g>
+                    <path d="M257.5,111.5 L259,113" id="Line" stroke="#979797" stroke-linecap="square"></path>
+                    <text id="success-pucker" transform="translate(222.821926, 111.881429) rotate(-2.000000) translate(-222.821926, -111.881429) " font-family="Chalkduster" font-size="40" font-weight="normal" fill="#36E928">
+                        <tspan x="139.821926" y="125.881429">pucker!</tspan>
+                    </text>
+                </g>
+            </g>
+        </svg>
+        <span class="data" id="color1set"></span>
+        <span class="data" id="color2set"></span>
+        <span class="data" id="color3set"></span>
+        <span class="data" id="color4set"></span>
+      </div> 
+    </div>
+    <script src="https://www.puck-js.com/puck.js"></script>
+    <script>
+      var pucker = {
+        'init': function(){
+          // Start webbluetooth
+          clearTimeout();
+          setTimeout(pucker.setColor(1), 1000);
+          setTimeout(pucker.setColor(2), 2000);
+          setTimeout(pucker.setColor(3), 3000);
+          setTimeout(pucker.setColor(4), 3000);
+        },
+        'setColor': function(step) {
+            var led = Math.floor(Math.random() * 3) + 1;
+            var cmd = 'LED' + led + '.set()\n';
+            var el = 'color' + step + 'set';
+            puck.write('LED1.reset();LED2.reset();LED3.reset();\n');
+            puck.write(cmd);
+            document.getElememById(step).val = led;
+        }
+      }
+    </script>  
+    <script>
+      var color1 = document.getElementById("color-1");
+      var color2 = document.getElementById("color-1");
+      var color3 = document.getElementById("color-1");
+      var color3 = document.getElementById("color-1");
+      var start = document.getElementById("start-button");
+
+      // Start button listener
+      start.addEventListener("click", pucker.init);
+
+    </script>  
+     
+	</body>
+</html>
+
+<!--			
+  <style>
+    body { margin:0; background-color:black; }
+    svg {
+      display:block; position:absolute;
+      top:0%; left:0%; width:100%; height:100%;
+    }
+  </style>
+</head><body>
+  <svg width="76" height="76" viewBox="0 0 76.00 76.00">
+  	<path fill="#444" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 34.8333,60.1667L 34.8333,57.3958L 41.1667,58.5833L 41.1667,60.1667L 34.8333,60.1667 Z M 31.6666,55.0209L 31.6666,52.25L 44.3333,53.8334L 44.3333,56.6042L 31.6666,55.0209 Z M 44.3333,51.8542L 31.6666,50.2709L 31.6666,47.5L 44.3333,49.0834L 44.3333,51.8542 Z M 38,17.4167C 44.9956,17.4167 50.6667,23.4422 50.6667,30.875C 50.6667,35.8565 44.3333,40.7324 44.3333,42.5329L 44.3333,47.5L 31.6667,45.9167L 31.6667,42.5329C 31.6667,41.1667 25.3333,35.8565 25.3333,30.875C 25.3333,23.4422 31.0044,17.4167 38,17.4167 Z "/>
+  </svg>
+  <script src="js/puck.js"></script>
+  <script type="text/javascript">
+    var path = document.getElementsByTagName('path')[0];
+    var on = false;
+    path.addEventListener("click", function() {
+      on = !on;
+      if (on) {
+        path.style.fill="yellow";
+        Puck.write('Puck.IR([9.6,4.9,0.5,0.7,0.5,0.7,0.6,0.7,0.5,0.7,0.5,0.7,0.6,0.7,0.5,0.7,0.5,0.7,0.6,1.9,0.5,1.9,0.5,1.9,0.6,1.9,0.5,1.9,0.5,1.9,0.6,1.9,0.5,1.9,0.5,1.9,0.6,1.9,0.5,1.9,0.6,0.7,0.5,0.6,0.6,0.7,0.5,0.7,0.5,0.7,0.6,0.6,0.6,0.7,0.5,0.7,0.6,1.9,0.5,1.9,0.5,1.9,0.6,1.9,0.5,1.9,0.5,43.1,9.6,2.5,0.5]);\n');
+      } else {
+        path.style.fill="#444";
+        Puck.write('Puck.IR([9.6,5,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,1.9,0.5,1.9,0.5,1.9,0.6,1.9,0.5,1.9,0.5,1.9,0.5,1.9,0.5,1.9,0.5,0.7,0.5,1.9,0.5,1.9,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,0.7,0.5,1.9,0.5,0.7,0.5,0.7,0.5,1.9,0.5,1.9,0.5,1.9,0.5,1.9,0.5,1.9,0.5]);\n');
+      }
+    });
+  </script>
+</body></html>
+-->
