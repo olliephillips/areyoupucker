@@ -83,11 +83,14 @@
       var pucker = {
         'init': function(){
           // Start webbluetooth
-          //clearTimeout();
-          setTimeout(pucker.setColor(1), 1000);
-          setTimeout(pucker.setColor(2), 2000);
-          setTimeout(pucker.setColor(3), 3000);
-          setTimeout(pucker.setColor(4), 3000);
+          Puck.connect(function(connection) {
+            if (!connection) throw "Error!";
+            clearTimeout();
+            setTimeout(pucker.setColor(1), 1000);
+            setTimeout(pucker.setColor(2), 2000);
+            setTimeout(pucker.setColor(3), 3000);
+            setTimeout(pucker.setColor(4), 3000);
+          }); 
         },
         'setColor': function(step) {
             var led = Math.floor(Math.random() * 3) + 1;
