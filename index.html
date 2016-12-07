@@ -95,13 +95,11 @@ var myInt;
       		}*/	
           // Start webbluetooth
           Puck.connect(function(c) {
-            if (!c) {
-	    	console.log("Problem connecting");
-		return;
-	    }
+        
+		  
 		console.log("Connected"); 
 		connection = c;
-		connection.write('reset();\n', function(){
+		connection.write("reset();\n", function(){
 			setTimeout(function(){
 			connection.write("LED1.set();\n", function(){
 			connection.write("LED2.set();\n");
