@@ -100,11 +100,11 @@ var connection;
 		connection.write('reset()\n', function(){
 			var led,cmd;
 			setTimeout(function(){
-				led = puck.getColor();
-				connection.write(puck.getCmd(led), function(){
+				led = pucker.getColor();
+				connection.write(pucker.getCmd(led), function(){
 					setTimeOut(function(){
-					led = puck.getColor();
-					connection.write(puck.getCmd(led), function(){
+					led = pucker.getColor();
+					connection.write(pucker.getCmd(led), function(){
 						console.log("done");
 					});	
 					}, 1500);
