@@ -86,7 +86,7 @@
           Puck.connect(function(connection) {
             if (!connection) throw "Error!";
 		console.log("Connected");
-            clearTimeout();
+            //clearTimeout();
             setTimeout(pucker.setColor(1), 1000);
             setTimeout(pucker.setColor(2), 2000);
             setTimeout(pucker.setColor(3), 3000);
