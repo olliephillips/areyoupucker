@@ -98,17 +98,26 @@ var connection;
 		console.log("Connected"); 
 		connection = c;
 		connection.write('reset()\n', function(){
-			var led,cmd;
-			setTimeout(function(){
-				led = pucker.getColor();
-				connection.write(pucker.getCmd(led), function(){
-					setTimeOut(function(){
-					led = pucker.getColor();
-					connection.write(pucker.getCmd(led), function(){
-						console.log("done");
-					});	
-					}, 1500);
-				});
+			var led,cmd,
+			var on = false;
+			var count = 0;
+			var myInt = setInterval(function(){
+				if(count < 4){
+					if(on) {
+						connection.write(pucker.getCmdOff(led));
+						on != on;	
+					} else {
+						led = pucker.getColor();
+						connection.write(pucker.getCmdOn(led);
+						count++;		 
+					}
+				} else {
+					clearInterval(myInt);			 
+				}
+					
+			   },1500);
+			
+
 			},1500);
 		});    
 		    
@@ -122,9 +131,13 @@ var connection;
 	'getColor': function(){
 		return Math.floor(Math.random() * 3) + 1;
 	},
-	'getCmd': function(led){
+	'getCmdOn': function(led){
 		return 'LED' + led + '.set()\n';
-	} 
+	},
+	'getCmdOff': function(led){
+		return 'LED' + led + '.reset()\n';
+	}
+	      
 	 /*     
         'setColor': function(step) {
 		console.log("Step " + step);
