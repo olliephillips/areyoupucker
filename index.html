@@ -101,7 +101,7 @@ var myInt;
 	    } else {
 		console.log("Connected"); 
 		connection = c;
-		connection.write('reset();\n', function(){
+		connection.write("reset();\n", function(){
 			console.log("reset");
 			setTimeout(function(){
 				console.log("in timeout");
@@ -122,7 +122,8 @@ var myInt;
 					}
 					
 			   },1500);
-			},500);
+				
+			},1500);
 			
 			
 		});    
@@ -138,10 +139,10 @@ var myInt;
 		return Math.floor(Math.random() * 3) + 1;
 	},
 	'getCmdOn': function(led){
-		return 'LED' + led + '.set()\n';
+		return "LED" + led + ".set();\n";
 	},
 	'getCmdOff': function(){
-		return 'LED1.reset();LED2.reset();LED3.reset();\n';
+		return "LED1.reset();LED2.reset();LED3.reset();\n";
 	}
 	      
 	 /*     
