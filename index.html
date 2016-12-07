@@ -101,9 +101,9 @@ var myInt;
 		connection = c;
 		connection.write("reset();\n", function(){
 			setTimeout(function(){
-			connection.write("LED1.set();\n", function(){
+			connection.write("LED1.set();\n");
 			connection.write("LED2.set();\n");
-			});
+		
 			
 			/*
 			console.log("reset");
@@ -127,7 +127,7 @@ var myInt;
 					
 			   },1500);*/
 				
-			},3000);
+			},5000);
 			
 			
 		});    
