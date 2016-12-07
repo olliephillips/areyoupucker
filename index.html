@@ -88,7 +88,7 @@
         'init': function(){
 
           // Start webbluetooth
-  		var led,cmd,el,myInt;
+  		var led,cmd,step,el,myInt;
 		var on = false;
 		var count = 0;
 		
@@ -108,8 +108,9 @@
 							}
 						} else {
 							led = pucker.getColor();
+							step = count + 1;
+							el = 'color' + step + 'set';
 							Puck.write(pucker.getCmdOn(led));
-							el = 'color' + count + 'set';
     							document.getElementById(el).value = led;
 							count++;		 
 						}
