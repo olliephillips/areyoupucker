@@ -98,12 +98,14 @@ var myInt;
        
 		Puck.write("reset();\n", function(){
 		setTimeout(function(){
+			Puck.write(pucker.getCmdOff());
 			console.log("in timeout");
 	
 				myInt = setInterval(function(){
 					console.log("in interval");
 					if(count < 4){
 						if(on) {
+							console.log("on");
 							Puck.write(pucker.getCmdOff());
 							on = !on;	
 						} else {
