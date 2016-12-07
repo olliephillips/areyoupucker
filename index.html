@@ -94,16 +94,32 @@ var myInt;
         		connection = undefined;
       		}*/	
           // Start webbluetooth
-          Puck.connect(function(c) {
-        
-		  
-		console.log("Connected"); 
-		connection = c;
-		connection.write("reset();\n", function(){
-			setTimeout(function(){
-			connection.write("LED1.set();\n");
-			connection.write("LED2.set();\n");
+  
+       
+		Puck.write('reset();\n);
+		setTimeout(function(){
+			console.log("in timeout");
+	
+				myInt = setInterval(function(){
+					console.log("in interval");
+					if(count < 4){
+						if(on) {
+							Puck.write(pucker.getCmdOff());
+							on != on;	
+						} else {
+							led = pucker.getColor();
+							Puck.write(pucker.getCmdOn(led));
+							count++;		 
+						}
+					} else {
+					clearInterval(myInt);			 
+					}
+					
+			   },1500);
 		
+		},1500);
+			   
+			
 			
 			/*
 			console.log("reset");
@@ -127,17 +143,17 @@ var myInt;
 					
 			   },1500);*/
 				
-			},5000);
+		
 			
 			
-		});    
+	
 		    
 		    
 	   
 		
     
       
-          }); 
+
         },
 	'getColor': function(){
 		return Math.floor(Math.random() * 3) + 1;
