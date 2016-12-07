@@ -72,10 +72,10 @@
                 </g>
             </g>
         </svg>
-        <span class="data" id="color1set"></span>
-        <span class="data" id="color2set"></span>
-        <span class="data" id="color3set"></span>
-        <span class="data" id="color4set"></span>
+        <input type="hidden" id="color1set"/>
+        <input type="hidden" id="color2set"/>
+        <input type="hidden" id="color3set"/>
+        <input type="hidden" id="color4set"/>
       </div> 
     </div>
     <script src="https://www.puck-js.com/puck.js"></script>
@@ -111,7 +111,7 @@
 							step = count + 1;
 							el = 'color' + step + 'set';
 							Puck.write(pucker.getCmdOn(led));
-    							document.getElementById(el).text = led;
+    							document.getElementById(el).value = led;
 							count++;		 
 						}
 						on = !on;
