@@ -102,6 +102,7 @@ var myInt;
 		console.log("Connected"); 
 		connection = c;
 		connection.write('reset();\n', function(){
+			setTimeout(function(){
 			connection.write("LED1.set();\n");
 			connection.write("LED2.set();\n");
 			/*
