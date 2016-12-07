@@ -88,23 +88,23 @@
 		console.log("Connected");
             //clearTimeout();
 		//connection.on('data', function(d) {
-			setTimeout(pucker.setColor(1), 1000);
-            		setTimeout(pucker.setColor(2), 2000);
-            		setTimeout(pucker.setColor(3), 3000);
-            		setTimeout(pucker.setColor(4), 3000);
+			setTimeout(pucker.setColor(connection,1), 1000);
+            		setTimeout(pucker.setColor(connection, 2), 2000);
+            		setTimeout(pucker.setColor(connection, 3), 3000);
+            		setTimeout(pucker.setColor(connection, 4), 3000);
 	    		setTimeout(Puck.close(), 5000);
 		//});
       
           }); 
         },
-        'setColor': function(step) {
+        'setColor': function(con,step) {
 		console.log("Step " + step);
             var led = Math.floor(Math.random() * 3) + 1;
             var cmd = 'LED' + led + '.set()\n';
             var el = 'color' + step + 'set';
-            Puck.write('LED1.reset();LED2.reset();LED3.reset();\n');
-            Puck.write(cmd);
-            //document.getElementById(el).value = led;
+            con.write('LED1.reset();LED2.reset();LED3.reset();\n');
+            con.write(cmd);
+            document.getElementById(el).value = led;
         }
       }
     </script>  
