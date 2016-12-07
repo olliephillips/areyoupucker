@@ -94,7 +94,7 @@ var connection;
           Puck.connect(function(c) {
             if (!c) {
 	    	console.log("Problem connecting");
-	    } else {
+	    } //else {
 		console.log("Connected"); 
 		connection = c;
 		connection.write('reset()\n', function(){
@@ -120,7 +120,7 @@ var connection;
 		});    
 		    
 		    
-	    }
+	    //}
 		
     
       
