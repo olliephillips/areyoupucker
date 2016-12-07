@@ -98,24 +98,27 @@ var connection;
 		console.log("Connected"); 
 		connection = c;
 		connection.write('reset()\n', function(){
-			var led,cmd;
-			var on = false;
-			var count = 0;
-			var myInt = setInterval(function(){
-				if(count < 4){
-					if(on) {
-						connection.write(pucker.getCmdOff(led));
-						on != on;	
+			setTimeout(function(){
+				var led,cmd;
+				var on = false;
+				var count = 0;
+				var myInt = setInterval(function(){
+					if(count < 4){
+						if(on) {
+							connection.write(pucker.getCmdOff(led));
+							on != on;	
+						} else {
+							led = pucker.getColor();
+							connection.write(pucker.getCmdOn(led));
+							count++;		 
+						}
 					} else {
-						led = pucker.getColor();
-						connection.write(pucker.getCmdOn(led));
-						count++;		 
-					}
-				} else {
 					clearInterval(myInt);			 
-				}
+					}
 					
 			   },1500);
+			},1500);
+			
 			
 		});    
 		    
