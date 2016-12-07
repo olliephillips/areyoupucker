@@ -95,10 +95,10 @@ var connection;
             if (!c) {
 	    	console.log("Problem connecting");
 		return;
-	    } //else {
+	    } else {
 		console.log("Connected"); 
 		connection = c;
-		connection.write("reset();\n", function(){
+		connection.write('reset();\n', function(){
 			console.log("reset");
 			setTimeout(function(){
 				console.log("in timeout");
@@ -121,13 +121,13 @@ var connection;
 					}
 					
 			   },1500);
-			},1500);
+			},2000);
 			
 			
 		});    
 		    
 		    
-	    //}
+	    }
 		
     
       
@@ -137,10 +137,10 @@ var connection;
 		return Math.floor(Math.random() * 3) + 1;
 	},
 	'getCmdOn': function(led){
-		return "LED" + led + ".set()\n";
+		return 'LED' + led + '.set()\n';
 	},
 	'getCmdOff': function(){
-		return "LED1.reset();LED2.reset();LED3.reset();\n";
+		return 'LED1.reset();LED2.reset();LED3.reset();\n';
 	}
 	      
 	 /*     
