@@ -146,7 +146,8 @@
 	'getCmdOff': function(){
 		return 'LED1.reset();LED2.reset();LED3.reset();\n';
 	},
-	'panelClick': function(){
+	'panelClick': function(e){
+		e.preventDefault();
 		var elem, state, newFill;
 		state = this.getAttribute("fill");
 		switch(state){
