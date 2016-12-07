@@ -98,7 +98,7 @@ var connection;
 		console.log("Connected"); 
 		connection = c;
 		connection.write('reset()\n', function(){
-			var led,cmd,
+			var led,cmd;
 			var on = false;
 			var count = 0;
 			var myInt = setInterval(function(){
