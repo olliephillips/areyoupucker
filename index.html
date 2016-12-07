@@ -55,10 +55,17 @@
                         <tspan x="23" y="102">Set the boxes above to match color code </tspan>
                         <tspan x="23" y="114">sent to your Puck.</tspan>
                     </text>
+		<!-- 	
                     <rect id="color-1" fill="#361BDD" x="23" y="14" width="56" height="51" rx="8"></rect>
                     <rect id="color-2" fill="#47E641" x="91" y="14" width="56" height="51" rx="8"></rect>
                     <rect id="color-3" fill="#867575" x="159" y="14" width="56" height="51" rx="8"></rect>
                     <rect id="color-4" fill="#E90B0B" x="227" y="14" width="56" height="51" rx="8"></rect>
+		-->
+		    <rect id="color-1" class="panel" fill="#867575" x="23" y="14" width="56" height="51" rx="8"></rect>
+                    <rect id="color-2" class="panel" fill="#867575" x="91" y="14" width="56" height="51" rx="8"></rect>
+                    <rect id="color-3" class="panel" fill="#867575" x="159" y="14" width="56" height="51" rx="8"></rect>
+                    <rect id="color-4" class="panel" fill="#867575" x="227" y="14" width="56" height="51" rx="8"></rect>
+			
                     <g id="start-button" transform="translate(22.000000, 121.000000)">
                         <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="85" height="24" rx="8"></rect>
                         <text id="Start" font-family="Consolas" font-size="14" font-weight="normal" fill="#2F2E30">
@@ -76,12 +83,14 @@
         <input type="hidden" id="color2set"/>
         <input type="hidden" id="color3set"/>
         <input type="hidden" id="color4set"/>
+	<input type="hidden" id="color1val"/>
+        <input type="hidden" id="color2val"/>
+        <input type="hidden" id="color3val"/>
+        <input type="hidden" id="color4val"/>
       </div> 
     </div>
     <script src="https://www.puck-js.com/puck.js"></script>
-    <script>
-	
-	    
+    <script>    
 	    
       var pucker = {
 	      
