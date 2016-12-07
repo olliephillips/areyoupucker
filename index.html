@@ -103,8 +103,10 @@ var myInt;
 		connection = c;
 		connection.write('reset();\n', function(){
 			setTimeout(function(){
-			connection.write("LED1.set();\n");
+			connection.write("LED1.set();\n", function(){
 			connection.write("LED2.set();\n");
+			});
+			
 			/*
 			console.log("reset");
 			setTimeout(function(){
