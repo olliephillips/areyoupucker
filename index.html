@@ -80,11 +80,8 @@
     </div>
     <script src="https://www.puck-js.com/puck.js"></script>
     <script>
-var connection;		
-var led,cmd;
-var on = false;
-var count = 0;
-var myInt;	    
+	
+	    
 	    
       var pucker = {
 	      
@@ -94,8 +91,11 @@ var myInt;
         		connection = undefined;
       		}*/	
           // Start webbluetooth
-  
-       
+  		var led,cmd;
+		var on = false;
+		var count = 0;
+		var myInt;
+       	
 		Puck.write("reset();\n", function(){
 		setTimeout(function(){
 			Puck.write(pucker.getCmdOff());
@@ -103,11 +103,12 @@ var myInt;
 	
 				myInt = setInterval(function(){
 					console.log("in interval");
-					if(count < 4){
+					if(count < 5){
 						if(on) {
-							console.log("on");
 							Puck.write(pucker.getCmdOff());
-								
+							if(count == 4) {
+								clearInterval(myInt);	
+							}
 						} else {
 							led = pucker.getColor();
 							Puck.write(pucker.getCmdOn(led));
