@@ -93,8 +93,8 @@
             var led = Math.floor(Math.random() * 3) + 1;
             var cmd = 'LED' + led + '.set()\n';
             var el = 'color' + step + 'set';
-            puck.write('LED1.reset();LED2.reset();LED3.reset();\n');
-            puck.write(cmd);
+            Puck.write('LED1.reset();LED2.reset();LED3.reset();\n');
+            Puck.write(cmd);
             document.getElememById(step).val = led;
         }
       }
