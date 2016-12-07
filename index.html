@@ -81,7 +81,10 @@
     <script src="https://www.puck-js.com/puck.js"></script>
     <script>
 var connection;		
-	    
+var led,cmd;
+var on = false;
+var count = 0;
+var myInt;	    
 	    
       var pucker = {
 	      
@@ -102,10 +105,8 @@ var connection;
 			console.log("reset");
 			setTimeout(function(){
 				console.log("in timeout");
-				var led,cmd;
-				var on = false;
-				var count = 0;
-				var myInt = setInterval(function(){
+	
+				myInt = setInterval(function(){
 					console.log("in interval");
 					if(count < 4){
 						if(on) {
@@ -121,7 +122,7 @@ var connection;
 					}
 					
 			   },1500);
-			},2000);
+			},500);
 			
 			
 		});    
