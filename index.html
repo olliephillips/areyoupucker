@@ -85,7 +85,7 @@
         <input type="hidden" id="color3set"/>
         <input type="hidden" id="color4set"/>
 	<!-- Actual -->      
-	<input type="hidden" id="color1val"/>
+	<input type="hidden" id="color1val" />
         <input type="hidden" id="color2val"/>
         <input type="hidden" id="color3val"/>
         <input type="hidden" id="color4val"/>
@@ -188,10 +188,13 @@
 		var success = document.getElementById("success-pucker");
 		var button = document.getElementById("submit-form");
 		
-		if((color1set == color1val) && (color2set == color2val) && (color3set == color3val) && (color4set == color4val)) {
+		if((color1set == color1val) && (color1val != 0) && (color2set == color2val) && (color2val != 0) 
+		   && (color3set == color3val) && (color3val != 0) && (color4set == color4val) && (color4val != 0)) {
 		   success.style.display="block";
+		  button.setAttribute("disabled") = "";
 		} else {
 		   success.style.display="none";
+		button.setAttribute("disabled") = "disabled";
 		}
 	
 	}
