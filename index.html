@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <title>Are you pucker</title>
+    <title>Are you pucker?</title>
     <style>
       body{font-family:sans-serif;font-size:20px;color:#333333;}
       h1{font-size:32px;}
@@ -20,7 +20,7 @@
 	<body>
     <div id="form-wrapper">
       <h1>Submit the form</h1>
-      <form>
+      <form action="success.html" method="POST">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name"/>
@@ -56,13 +56,7 @@
                         <tspan x="23" y="102">Enter the color sequence sent to your</tspan>
                         <tspan x="23" y="114">Puck in the boxes above.</tspan>
                     </text>
-		<!-- 	
-                    <rect id="color-1" fill="#361BDD" x="23" y="14" width="56" height="51" rx="8"></rect>
-                    <rect id="color-2" fill="#47E641" x="91" y="14" width="56" height="51" rx="8"></rect>
-                    <rect id="color-3" fill="#867575" x="159" y="14" width="56" height="51" rx="8"></rect>
-                    <rect id="color-4" fill="#E90B0B" x="227" y="14" width="56" height="51" rx="8"></rect>
-		-->
-		    <rect id="color-1" class="panel" fill="#867575" x="23" y="14" width="56" height="51" rx="8"></rect>
+		                <rect id="color-1" class="panel" fill="#867575" x="23" y="14" width="56" height="51" rx="8"></rect>
                     <rect id="color-2" class="panel" fill="#867575" x="91" y="14" width="56" height="51" rx="8"></rect>
                     <rect id="color-3" class="panel" fill="#867575" x="159" y="14" width="56" height="51" rx="8"></rect>
                     <rect id="color-4" class="panel" fill="#867575" x="227" y="14" width="56" height="51" rx="8"></rect>
@@ -91,52 +85,51 @@
         <input type="hidden" id="color4val"/>
       </div> 
     </div>
+    <div>
+      <p>This example requires Web Bluetooth browser support and Puck.js</p>
+      <script>
+      <!--
+  document.write("<p><b>Note:</b> Web Bluetooth is  <b>" +
+    (navigator.bluetooth?'already enabled':'currently disabled')+
+    "</b> on this computer.</p>");
+  	-->
+      </script>
+    </div>
     <script src="https://www.puck-js.com/puck.js"></script>
     <script>    
 	    
       var pucker = {
-	      
         'init': function(){
-
-          // Start webbluetooth
-  		var led,cmd,step,el,myInt;
-		var on = false;
-		var count = 0;
-		
-       	
-		Puck.write("reset();\n", function(){
-		setTimeout(function(){
-			Puck.write(pucker.getCmdOff());
-			console.log("in timeout");
+  		    var led,cmd,step,el,myInt;
+		      var on = false;
+		      var count = 0;
 	
-				myInt = setInterval(function(){
-					console.log("in interval");
-					if(count < 5){
-						if(on) {
-							Puck.write(pucker.getCmdOff());
-							if(count == 4) {
-								clearInterval(myInt);	
-							}
-						} else {
-							led = pucker.getColor();
-							step = count + 1;
-							el = 'color' + step + 'set';
-							Puck.write(pucker.getCmdOn(led));
-    							document.getElementById(el).value = led;
-							count++;		 
-						}
-						on = !on;
-					} else {
-					clearInterval(myInt);			 
-					}
-					
-			   },1500);
-		
-		},1000);
-	});
-			   		
-
-        },
+	        Puck.write("reset();\n", function(){
+		        setTimeout(function(){
+			        Puck.write(pucker.getCmdOff());
+				      myInt = setInterval(function(){
+				        if(count < 5){
+						      if(on) {
+						  	    Puck.write(pucker.getCmdOff());
+							      if(count == 4) {
+								      clearInterval(myInt);	
+							      }
+						      } else {
+							      led = pucker.getColor();
+							      step = count + 1;
+							      el = 'color' + step + 'set';
+							      Puck.write(pucker.getCmdOn(led));
+    							  document.getElementById(el).value = led;
+							      count++;		 
+						      }
+						      on = !on;
+					      } else {
+					        clearInterval(myInt);			 
+					      }
+			      },1500);	
+		    },1500);
+	  });
+  },
 	'getColor': function(){
 		return Math.floor(Math.random() * 3) + 1;
 	},
@@ -177,45 +170,42 @@
 		pucker.check();
 	},
 	'check': function(){
-		 var color1set = document.getElementById("color1set").value;
-      		var color2set = document.getElementById("color2set").value;
-      		var color3set = document.getElementById("color3set").value;
-     		 var color4set = document.getElementById("color4set").value;
+		var color1set = document.getElementById("color1set").value;
+    var color2set = document.getElementById("color2set").value;
+    var color3set = document.getElementById("color3set").value;
+    var color4set = document.getElementById("color4set").value;
 		var color1val = document.getElementById("color1val").value;
-      		var color2val = document.getElementById("color2val").value;
-      		var color3val = document.getElementById("color3val").value;
-     		 var color4val = document.getElementById("color4val").value;
+    var color2val = document.getElementById("color2val").value;
+    var color3val = document.getElementById("color3val").value;
+    var color4val = document.getElementById("color4val").value;
 		var success = document.getElementById("success-pucker");
 		var button = document.getElementById("submit-form");
 		
 		if((color1set == color1val) && (color1val != 0) && (color2set == color2val) && (color2val != 0) 
 		   && (color3set == color3val) && (color3val != 0) && (color4set == color4val) && (color4val != 0)) {
-		   success.style.display="block";
+		  success.style.display="block";
 		  button.disabled = false;
 		} else {
-		   success.style.display="none";
-		button.disabled = true;
+		  success.style.display="none";
+		  button.disabled = true;
 		}
-	
 	}
-   
-      };
-    </script>  
-    <script>
-      var color1 = document.getElementById("color-1");
-      var color2 = document.getElementById("color-2");
-      var color3 = document.getElementById("color-3");
-      var color4 = document.getElementById("color-4");
-      var start = document.getElementById("start-button");
+};
 
-      // Start button listener
-      start.addEventListener("click", pucker.init);
-      // Color panel listeners
-      color1.addEventListener("click", pucker.panelClick);
+  var color1 = document.getElementById("color-1");
+  var color2 = document.getElementById("color-2");
+  var color3 = document.getElementById("color-3");
+  var color4 = document.getElementById("color-4");
+  var start = document.getElementById("start-button");
+
+  // Start button listener
+  start.addEventListener("click", pucker.init);
+  // Color panel listeners
+  color1.addEventListener("click", pucker.panelClick);
 	color2.addEventListener("click", pucker.panelClick); 
-	    color3.addEventListener("click", pucker.panelClick);
+	color3.addEventListener("click", pucker.panelClick);
 	color4.addEventListener("click", pucker.panelClick);	
-    </script>  
+</script>  
      
 	</body>
 </html>
