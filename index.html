@@ -153,7 +153,7 @@
 		color = this.getAttribute("id");
 		color = color.split("-");
 		elem = "color" + color[1] + "val";
-		
+		console.log(elem);
 		switch(state){
 			case "#867575":
 				newFill = "#E90B0B";
@@ -173,7 +173,7 @@
 			break;
 		}
 		this.setAttribute("fill", newFill);
-		document.getElementById(elem).value(set);
+		document.getElementById(elem).value = set;
 		pucker.check();
 	},
 	'check': function(){
