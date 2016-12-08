@@ -191,10 +191,10 @@
 		if((color1set == color1val) && (color1val != 0) && (color2set == color2val) && (color2val != 0) 
 		   && (color3set == color3val) && (color3val != 0) && (color4set == color4val) && (color4val != 0)) {
 		   success.style.display="block";
-		  button.setAttribute("disabled") = "";
+		  button.disabled = false;
 		} else {
 		   success.style.display="none";
-		button.setAttribute("disabled") = "disabled";
+		button.disabled = true;
 		}
 	
 	}
