@@ -107,7 +107,7 @@
 		      var count = 0;
 	
 	        Puck.write("reset();\n", function(){
-		        setTimeout(function(){
+		        //setTimeout(function(){
 			        Puck.write(pucker.getCmdOff());
 				      myInt = setInterval(function(){
 				        if(count < 5){
@@ -128,8 +128,8 @@
 					      } else {
 					        clearInterval(myInt);			 
 					      }
-			      },1500);	
-		    },1500);
+			      		},1500);	
+		    //},1500);
 	  });
   },
 	'getColor': function(){
