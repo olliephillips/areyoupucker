@@ -148,25 +148,53 @@
 	},
 	'panelClick': function(e){
 		e.preventDefault();
-		var elem, state, newFill;
+		var color, elem, state, newFil;, set;
 		state = this.getAttribute("fill");
-		elem = this.getAttribute("id");
+		color = this.getAttribute("id");
+		color = color.split("-");
+		elem = "color" + color[1] + "val";
+		
 		switch(state){
 			case "#867575":
 				newFill = "#E90B0B";
+				set = 1;
 			break;
 			case "#E90B0B":
 				newFill = "#47E641";
+				set = 2;
 			break;
 			case "#47E641":
 				newFill = "#361BDD";
+				set = 3;
 			break;
 			case "#361BDD":
 				newFill = "#E90B0B";
+				set = 1;
 			break;
 		}
 		this.setAttribute("fill", newFill);
-	}	
+		document.getElementById(elem).value(set);
+		pucker.check();
+	},
+	'check': function(){
+		 var color1set = document.getElementById("color1set").value;
+      		var color2set = document.getElementById("color2set").value;
+      		var color3set = document.getElementById("color3set").value;
+     		 var color4set = document.getElementById("color4set").value;
+		var color1val = document.getElementById("color1val").value;
+      		var color2val = document.getElementById("color2val").value;
+      		var color3val = document.getElementById("color3val").value;
+     		 var color4val = document.getElementById("color4val").value;
+		var success = document.getElementById("success-pucker");
+		var button = document.getElementById("submit-form");
+		
+		if((color1set == color1val) && (color2set == color2val) && (color3set == color3val) && (color4set == color4val) {
+		   success.style.display="block";
+		} else 
+		   success.style.display="none";
+		}
+	
+	}
    
       }
     </script>  
